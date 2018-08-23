@@ -1,26 +1,20 @@
 package timeperiod
 
 import (
-	"strconv"
 	"time"
 )
 
 func convert(period string) (dur time.Duration, ok bool) {
-	lastCharPosition := len(period) - 1
-	lastChar := period[lastCharPosition:]
-	numberAsText := period[0:lastCharPosition]
-
-	number, err := strconv.Atoi(numberAsText)
-	if err != nil {
-		return 0, false
+	value, unit, ok := splitValueAndUnit(period)
+	if !ok {
+		return
 	}
 
-	ok = true
-	switch lastChar {
+	switch unit {
 	case "w":
-		dur = time.Duration(number*24*7) * time.Hour
+		dur = time.Duration(value*24*7) * time.Hour
 	case "d":
-		dur = time.Duration(number*24) * time.Hour
+		dur = time.Duration(value*24) * time.Hour
 	default:
 		var err error
 		dur, err = time.ParseDuration(period)
