@@ -7,6 +7,8 @@ It returns an **int** value
 
 Invalid strings will return 0 (zero)
 
+If no unit is given it will assume that the value is in seconds
+
 ## Units
 `ns` // nanoseconds  
 `us` or `µs` // microseconds  
