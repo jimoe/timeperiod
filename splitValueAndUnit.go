@@ -1,10 +1,13 @@
 package timeperiod
 
-import "strconv"
-
-func splitValueAndUnit(period string) (value int, unit string, ok bool) {
-	ok = true
+func splitValueAndUnit(period string) (valueAsStr string, unit string) {
 	strLength := len(period)
+
+	lastChar := period[strLength-1:]
+	if isNumber(lastChar) {
+		valueAsStr = period
+		return
+	}
 
 	unitStrLength := 1
 	nextToLastChar := period[strLength-2 : strLength-1]
@@ -14,12 +17,7 @@ func splitValueAndUnit(period string) (value int, unit string, ok bool) {
 
 	position := strLength - unitStrLength
 	unit = period[position:]
-	valueAsText := period[0:position]
-
-	value, err := strconv.Atoi(valueAsText)
-	if err != nil {
-		ok = false
-	}
+	valueAsStr = period[0:position]
 
 	return
 }
