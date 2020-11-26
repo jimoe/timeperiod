@@ -6,6 +6,10 @@ import (
 )
 
 func convert(period string) (dur time.Duration, ok bool) {
+	if period == "" {
+		return
+	}
+
 	valueAsStr, unit := splitValueAndUnit(period)
 
 	value, err := strconv.Atoi(valueAsStr)
