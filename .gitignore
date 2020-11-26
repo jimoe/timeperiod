@@ -1,0 +1,13 @@
+# Editor
+.vscode
+.idea
+
+# config
+.env
+
+# binary etc
+main
+vendor
+
+# shell
+*.sh
