@@ -1,5 +1,9 @@
 package timeperiod
 
+import (
+	"time"
+)
+
 func Seconds(period string) int {
 	duration, ok := convert(period)
 	if !ok {
@@ -33,4 +37,12 @@ func Nanoseconds(period string) int {
 	}
 	nano := duration.Nanoseconds()
 	return int(nano)
+}
+
+func Duration(period string) time.Duration {
+	duration, ok := convert(period)
+	if !ok {
+		return 0
+	}
+	return duration
 }
