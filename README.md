@@ -14,7 +14,7 @@ If no unit is given it will assume that the value is in seconds
 
 ## Units
 `ns` // nanoseconds  
-`us` or `µs` // microseconds  
+`us` // microseconds  
 `ms` // milliseconds  
 `s` // seconds  
 `m` // minutes  
