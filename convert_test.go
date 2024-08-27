@@ -8,7 +8,7 @@ import (
 func TestConvert(t *testing.T) {
 	tests := []struct {
 		name     string
-		input    string
+		input    Period
 		expected time.Duration
 		ok       bool
 	}{

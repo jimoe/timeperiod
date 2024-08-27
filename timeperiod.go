@@ -4,10 +4,16 @@ import (
 	"time"
 )
 
+type Period string
+
+func (p Period) String() string {
+	return string(p)
+}
+
 // Seconds converts a time string with unit to an integer number of seconds
 // Valid time units are 'ns', 'us', 'ms', 's', 'm', 'h', `d` and `w`
-func Seconds(period string) int {
-	duration, ok := convert(period)
+func Seconds[P string | Period](period P) int {
+	duration, ok := convert(Period(period))
 	if !ok {
 		return 0
 	}
@@ -16,8 +22,8 @@ func Seconds(period string) int {
 
 // Milliseconds converts a time string with unit to an integer number of milliseconds
 // Valid time units are 'ns', 'us', 'ms', 's', 'm', 'h', `d` and `w`
-func Milliseconds(period string) int {
-	duration, ok := convert(period)
+func Milliseconds[P string | Period](period P) int {
+	duration, ok := convert(Period(period))
 	if !ok {
 		return 0
 	}
@@ -27,8 +33,8 @@ func Milliseconds(period string) int {
 
 // Microseconds converts a time string with unit to an integer number of microseconds
 // Valid time units are 'ns', 'us', 'ms', 's', 'm', 'h', `d` and `w`
-func Microseconds(period string) int {
-	duration, ok := convert(period)
+func Microseconds[P string | Period](period P) int {
+	duration, ok := convert(Period(period))
 	if !ok {
 		return 0
 	}
@@ -38,8 +44,8 @@ func Microseconds(period string) int {
 
 // Nanoseconds converts a time string with unit to an integer number of nanoseconds
 // Valid time units are 'ns', 'us', 'ms', 's', 'm', 'h', `d` and `w`
-func Nanoseconds(period string) int {
-	duration, ok := convert(period)
+func Nanoseconds[P string | Period](period P) int {
+	duration, ok := convert(Period(period))
 	if !ok {
 		return 0
 	}
@@ -49,8 +55,8 @@ func Nanoseconds(period string) int {
 
 // Duration converts a time string with unit to time.Duration
 // Valid time units are 'ns', 'us', 'ms', 's', 'm', 'h', `d` and `w`
-func Duration(period string) time.Duration {
-	duration, ok := convert(period)
+func Duration[P string | Period](period P) time.Duration {
+	duration, ok := convert(Period(period))
 	if !ok {
 		return 0
 	}

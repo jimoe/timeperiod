@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func convert(period string) (dur time.Duration, ok bool) {
+func convert(period Period) (dur time.Duration, ok bool) {
 	if period == "" {
 		return
 	}
@@ -27,7 +27,7 @@ func convert(period string) (dur time.Duration, ok bool) {
 		dur = time.Duration(value*24) * time.Hour
 	default:
 		var err error
-		dur, err = time.ParseDuration(period)
+		dur, err = time.ParseDuration(period.String())
 		if err != nil {
 			ok = false
 		}

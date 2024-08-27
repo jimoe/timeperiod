@@ -1,3 +1,3 @@
 module github.com/jimoe/timeperiod
 
-go 1.11
+go 1.18
