@@ -1,18 +1,23 @@
 package timeperiod
 
+import (
+	"unicode/utf8"
+)
+
 func splitValueAndUnit(period string) (valueAsStr string, unit string) {
 	strLength := len(period)
+	unitStrLength := 0
 
-	lastChar := period[strLength-1:]
-	if isNumber(lastChar) {
+	lastChar, size := utf8.DecodeLastRuneInString(period)
+	unitStrLength += size
+	if isNumber(string(lastChar)) {
 		valueAsStr = period
 		return
 	}
 
-	unitStrLength := 1
-	nextToLastChar := period[strLength-2 : strLength-1]
-	if !isNumber(nextToLastChar) {
-		unitStrLength = 2
+	nextToLastChar, size := utf8.DecodeLastRuneInString(period[:strLength-size])
+	if !isNumber(string(nextToLastChar)) {
+		unitStrLength += size
 	}
 
 	position := strLength - unitStrLength
