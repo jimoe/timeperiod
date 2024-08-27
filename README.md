@@ -15,6 +15,7 @@ If no unit is given it will assume that the value is in seconds
 ## Units
 `ns` // nanoseconds  
 `us` // microseconds  
+`µs` // microseconds  
 `ms` // milliseconds  
 `s` // seconds  
 `m` // minutes  
@@ -29,4 +30,5 @@ If no unit is given it will assume that the value is in seconds
 `timeperiod.Milliseconds("5m")` // 300000  
 `timeperiod.Microconds("1h")` // 3600000000  
 `timeperiod.Nanoseconds("1us")` // 1000  
+`timeperiod.Nanoseconds("1µs")` // 1000  
 `timeperiod.Duration("5ns")` // 5  
